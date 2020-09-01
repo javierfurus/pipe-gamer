@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "gamedb",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "pied_gamer",
+            "password": "toor",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "root"
+        }
+    ]
+}

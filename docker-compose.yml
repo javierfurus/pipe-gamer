@@ -1,0 +1,42 @@
+version: "2"
+services:
+  pipe-gamer-db:
+    container_name: pipe-gamer-db
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: "gamedb"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "root"
+      MYSQL_ROOT_PASSWORD: "toor"
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    volumes:
+      - pipe-gamer-db-data:/var/lib/mysql
+    networks:
+      inner:
+        aliases:
+          - pipe-gamer-db
+  pipe-gamer:
+    container_name: pipe-gamer
+    build:
+      context: ./
+      dockerfile: Dockerfile.development
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - pipe-gamer-db
+    volumes:
+      - "./:/usr/src/app"
+      - "~/.ssh:/root/.ssh"
+    networks:
+      inner:
+        aliases:
+          - pipe-gamer
+networks:
+  inner: {}
+volumes:
+  pipe-gamer-db-data: {}

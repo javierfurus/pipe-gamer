@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www",
+    "db:migrate": "node ./node_modules/.bin/knex migrate:up --knexfile=./config/database.json",
+    "db:rollback": "node ./node_modules/.bin/knex migrate:rollback --knexfile=config/database.json",
+    "db:seed": "node ./node_modules/.bin/knex seed:run --knexfile=config/database.json"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -11,6 +14,11 @@
     "express": "~4.16.1",
     "hbs": "^4.1.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "knex": "^0.21.5",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

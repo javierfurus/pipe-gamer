@@ -1,0 +1,18 @@
+{
+    "development": {
+      "client": "mysql",
+      "connection": {
+        "host": "pipe-gamer-db",
+        "user": "root",
+        "password": "toor",
+        "database": "gamedb"
+      },
+      "migrations": {
+        "tableName": "migrations",
+        "directory": "../db/migrations"
+      },
+      "seeds": {
+        "directory": "../db/seeds"
+      }
+    }
+  }
