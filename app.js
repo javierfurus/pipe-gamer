@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const handlebars = require('express-handlebars');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -10,6 +11,13 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // view engine setup
+app.engine(
+  'hbs',
+  handlebars({
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),
+    extname: 'hbs'
+  })
+);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
