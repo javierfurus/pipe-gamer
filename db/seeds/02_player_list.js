@@ -5,7 +5,8 @@ exports.seed = function (knex) {
         {
           nickname: 'javfur',
           first_name: 'Javier',
-          last_name: 'Furus'
+          last_name: 'Furus',
+          credits: 20000
         }
       ];
 

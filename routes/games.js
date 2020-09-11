@@ -46,4 +46,16 @@ router.delete('/:id', async (req, res, next) => {
     .del();
   res.redirect('back');
 });
+
+router.get('/:id', async (req, res, next) => {
+  const id = req.params.id;
+  const price = await knex('game_list')
+    .select('price')
+    .where('game_id', id)
+    .first();
+  await knex('player_list')
+    .where('player_id', 1)
+    .decrement('credits', price.price);
+  res.redirect('back');
+});
 module.exports = router;

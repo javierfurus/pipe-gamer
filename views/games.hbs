@@ -12,13 +12,16 @@
         <h5 class="card-title">{{title}}</h5>
         <p class="card-text">{{publisher}}</p>
         <p class="card-text"><small class="text-muted">{{year}}</small></p>
-        <p class="card-text">{{publisher}}</p>
+        <p class="card-text">Price: {{price}} Credits</p>
+        <div class="d-flex justify-content-between">
         {{#unless favorite}}
               <a name="add" id="add" class="btn btn-primary" href="/games/{{game_id}}?_method=POST" role="button">Add to favorites</a>
         {{/unless}}
         {{#if favorite}}
               <a name="add" id="add" class="btn btn-warning" href="/games/{{game_id}}?_method=DELETE" role="button">Remove from favorites</a>
         {{/if}}
+              <a name="buy" id="buy" class="btn btn-success" href="/games/{{game_id}}" role="button">Buy!</a>
+      </div>
       </div>
     </div>
   </div>

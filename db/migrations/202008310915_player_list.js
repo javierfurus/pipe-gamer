@@ -4,6 +4,7 @@ exports.up = function (knex) {
     table.string('nickname', 1000).notNullable();
     table.string('first_name', 1000).notNullable();
     table.string('last_name', 1000).notNullable();
+    table.integer('credits');
   });
 };
 
