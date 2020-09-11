@@ -1,42 +1,46 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<div class="row">
 {{#each profile}}
-<div class="card m-3" style="max-width: 540px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="https://vignette.wikia.nocookie.net/sonic/images/d/d6/Sonic_Generations.jpg/revision/latest?cb=20191004103644" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{nickname}}</h5>
-        <p class="card-text">{{first_name}} {{last_name}}</p>
-        <p class="card-text"><small class="text-muted">{{year}}</small></p>
-        <p class="card-text">{{publisher}}</p>
-      </div>
-    </div>
-  </div>
-</div>
+<p>Welcome {{nickname}}! How are you doing?</p>
 {{/each}}
+<div class="row">
+    {{#each profile}}
+    <div class="card m-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="https://vignette.wikia.nocookie.net/sonic/images/d/d6/Sonic_Generations.jpg/revision/latest?cb=20191004103644"
+                    class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{nickname}}</h5>
+                    <p class="card-text">{{first_name}} {{last_name}}</p>
+                    <p class="card-text"><small class="text-muted">{{year}}</small></p>
+                    <p class="card-text">{{publisher}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
 </div>
 
 <div class="row">
-{{#each collection}}
-<div class="card m-3" style="max-width: 540px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="https://vignette.wikia.nocookie.net/sonic/images/d/d6/Sonic_Generations.jpg/revision/latest?cb=20191004103644" class="card-img" alt="...">
+    {{#each collection}}
+    <div class="card m-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="https://vignette.wikia.nocookie.net/sonic/images/d/d6/Sonic_Generations.jpg/revision/latest?cb=20191004103644"
+                    class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <p class="card-text">{{publisher}}</p>
+                    <p class="card-text"><small class="text-muted">{{year}}</small></p>
+                    <p class="card-text">{{progress}}</p>
+                    <a name="add" id="add" class="btn btn-warning" href="/games/{{game_id}}?_method=DELETE"
+                        role="button">Remove from favorites</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
-        <p class="card-text">{{publisher}}</p>
-        <p class="card-text"><small class="text-muted">{{year}}</small></p>
-        <p class="card-text">{{favorite}}</p>
-        <p class="card-text">{{progress}}</p>
-      </div>
-    </div>
-  </div>
-</div>
-{{/each}}
+    {{/each}}
 </div>
