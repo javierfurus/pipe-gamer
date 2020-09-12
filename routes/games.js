@@ -1,13 +1,14 @@
 var express = require('express');
 const knex = require('../db/knex');
 var router = express.Router();
-
 /* GET users listing. */
 router.get('/', async (req, res, next) => {
+  const user = await knex('player_list').select()
+    .where('player_id', 1);
   const games = await knex('game_list')
     .leftJoin('collection', 'collection.game_id', 'game_list.game_id')
     .select('collection.*', 'game_list.*');
-  res.render('games', { title: 'Games', games });
+  res.render('games', { title: 'Games', games, user });
 });
 router.use((req, res, next) => {
   // Itt megnézzük, hogy a hívás, amit kapunk, az mi

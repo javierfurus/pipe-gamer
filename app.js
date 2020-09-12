@@ -4,7 +4,7 @@ const handlebars = require('express-handlebars');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const knex = require('./db/knex');
 var indexRouter = require('./routes/index');
 var gamesRouter = require('./routes/games');
 var profileRouter = require('./routes/profile');
@@ -16,18 +16,25 @@ app.engine(
   'hbs',
   handlebars({
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
+    defaultLayout: 'main',
     extname: 'hbs'
   })
 );
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
+app.locals.user = async () => {
+  const user = await knex('player_list').select()
+    .where('player_id', 1);
+  console.log(user);
+  console.log('User helper has been called');
+  return user;
+};
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.locals.username =
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
 app.use('/profile', profileRouter);
