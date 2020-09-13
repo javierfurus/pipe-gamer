@@ -5,7 +5,8 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', async (req, res, next) => {
   const user = await knex('player_list').select()
-    .where('player_id', 1);
+    .where('player_id', 1)
+    .first();
   const collection = await knex('collection')
     .where('player_id', 1)
     .join('game_list', 'game_list.game_id', 'collection.game_id')

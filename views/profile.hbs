@@ -1,9 +1,9 @@
-{{#each profile}}
+{{#with user}}
 <p>Welcome {{nickname}}! How are you doing?</p>
 <p>Your credits: {{credits}} Credits</p>
-{{/each}}
+{{/with}}
 <div class="row">
-    {{#each user}}
+    {{#with user}}
     <div class="card m-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    {{/each}}
+    {{/with}}
 </div>
 
 <div class="row">

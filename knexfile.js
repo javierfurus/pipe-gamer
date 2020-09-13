@@ -3,18 +3,19 @@
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'mysql',
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password'
+      host: 'pipe-gamer-db',
+      user: 'root',
+      password: 'toor',
+      database: 'gamedb'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations',
+      tableName: 'migrations',
       directory: __dirname + '/db/migrations'
     },
     seeds: {

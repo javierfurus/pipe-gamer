@@ -17,24 +17,26 @@ app.engine(
   handlebars({
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     defaultLayout: 'main',
+    helpers: {
+      user: async () => {
+        const user = await knex('player_list').select()
+          .where('player_id', 1)
+          .first();
+        console.log(user);
+        console.log('User helper has been called');
+        return user;
+      }
+    },
     extname: 'hbs'
   })
 );
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.locals.user = async () => {
-  const user = await knex('player_list').select()
-    .where('player_id', 1);
-  console.log(user);
-  console.log('User helper has been called');
-  return user;
-};
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.locals.username =
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
 app.use('/profile', profileRouter);
