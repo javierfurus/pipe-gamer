@@ -30,7 +30,9 @@ router.get('/', async (req, res, next) => {
     .join('game_list', 'game_list.game_id', '=', 'cart.game_id');
   const games = await knex('game_list')
     .leftJoin('collection', 'collection.game_id', 'game_list.game_id')
-    .select('collection.*', 'game_list.*');
+    .leftJoin('cart', 'cart.game_id', '=', 'game_list.game_id')
+    .select('collection.*', 'game_list.*', 'cart.game_id as cartgameid');
+  console.log(games);
   const sum = await knex('cart')
     .where('player_id', 1)
     .join('game_list', 'game_list.game_id', '=', 'cart.game_id')
@@ -50,19 +52,16 @@ router.get('/details/:id', async (req, res, next) => {
   res.render('details', game);
 });
 // Add a game to the collection of a player (now hardcoded: 1)
-router.post('/:id', async (req, res, next) => {
-  const collection = {
-    player_id: 1,
-    game_id: req.params.id,
-    progress: 0,
-    favorite: 1
-  };
-  await knex('collection').insert(collection);
+router.post('/:id/favorite/add', async (req, res, next) => {
+  const id = req.params.id;
+  await knex('collection').where('game_id', '=', id)
+    .update('favorite', 1);
   res.redirect('back');
 });
-router.delete('/:id', async (req, res, next) => {
+router.post('/:id/favorite/remove', async (req, res, next) => {
   const id = req.params.id;
-  await knex('collection').where('game_id', id).del();
+  await knex('collection').where('game_id', '=', id)
+    .update('favorite', 0);
   res.redirect('back');
 });
 // Buy, buy, buy!
@@ -72,9 +71,12 @@ router.put('/buy', async (req, res, next) => {
     .join('game_list', 'game_list.game_id', '=', 'cart.game_id')
     .sum('price as total')
     .first();
+  const games = await knex('cart').select('player_id', 'game_id')
+    .where('player_id', 1);
   await knex('player_list')
     .where('player_id', 1)
     .decrement('credits', sum.total);
+  await knex('collection').insert(games);
   await knex('cart')
     .where('player_id', 1)
     .del();

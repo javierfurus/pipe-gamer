@@ -4,8 +4,8 @@ exports.up = function (knex) {
     table.integer('game_id').unsigned();
     table.foreign('player_id').references('player_list.player_id');
     table.foreign('game_id').references('game_list.game_id');
-    table.integer('progress');
-    table.boolean('favorite');
+    table.integer('progress').defaultTo(0);
+    table.boolean('favorite').defaultTo(0);
   });
 };
 

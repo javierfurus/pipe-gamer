@@ -37,8 +37,16 @@
                     <p class="card-text">{{publisher}}</p>
                     <p class="card-text"><small class="text-muted">{{year}}</small></p>
                     <p class="card-text">{{progress}}</p>
-                    <a name="add" id="add" class="btn btn-warning" href="/games/{{game_id}}?_method=DELETE"
-                        role="button">Remove from favorites</a>
+             {{#unless favorite}}
+            <a name="add" id="add" class="btn btn-primary" href="/games/{{game_id}}/favorite/add?_method=POST"
+              role="button">Add to
+              favorites</a>
+            {{/unless}}
+            {{#if favorite}}
+            <a name="add" id="add" class="btn btn-warning" href="/games/{{game_id}}/favorite/remove?_method=POST"
+              role="button">Remove
+              from favorites</a>
+            {{/if}}
                 </div>
             </div>
         </div>

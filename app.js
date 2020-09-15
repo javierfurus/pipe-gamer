@@ -18,13 +18,10 @@ app.engine(
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     defaultLayout: 'main',
     helpers: {
-      user: async () => {
-        const user = await knex('player_list').select()
-          .where('player_id', 1)
-          .first();
-        console.log(user);
-        console.log('User helper has been called');
-        return user;
+      isTitle: (title, pageTitle) => {
+        if (title === pageTitle) {
+          return true;
+        }
       }
     },
     extname: 'hbs'
