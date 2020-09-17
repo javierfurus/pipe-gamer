@@ -22,9 +22,10 @@
     </div>
     {{/with}}
 </div>
-
+<div>Your collection</div>
 <div class="row">
     {{#each collection}}
+    {{#unless favorite}}
     <div class="card m-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
@@ -37,19 +38,53 @@
                     <p class="card-text">{{publisher}}</p>
                     <p class="card-text"><small class="text-muted">{{year}}</small></p>
                     <p class="card-text">{{progress}}</p>
-             {{#unless favorite}}
-            <a name="add" id="add" class="btn btn-primary" href="/games/{{game_id}}/favorite/add?_method=POST"
-              role="button">Add to
-              favorites</a>
-            {{/unless}}
-            {{#if favorite}}
-            <a name="add" id="add" class="btn btn-warning" href="/games/{{game_id}}/favorite/remove?_method=POST"
-              role="button">Remove
-              from favorites</a>
-            {{/if}}
+                    {{#unless favorite}}
+                    <a name="add" id="add" class="btn btn-primary" href="/games/{{game_id}}/favorite/add?_method=POST"
+                        role="button">Add to
+                        favorites</a>
+                    {{/unless}}
+                    {{#if favorite}}
+                    <a name="add" id="add" class="btn btn-warning"
+                        href="/games/{{game_id}}/favorite/remove?_method=POST" role="button">Remove
+                        from favorites</a>
+                    {{/if}}
                 </div>
             </div>
         </div>
     </div>
+    {{/unless}}
+    {{/each}}
+</div>
+<div>Your favorites</div>
+<div class="row">
+    {{#each collection}}
+    {{#if favorite}}
+    <div class="card m-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="https://vignette.wikia.nocookie.net/sonic/images/d/d6/Sonic_Generations.jpg/revision/latest?cb=20191004103644"
+                    class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <p class="card-text">{{publisher}}</p>
+                    <p class="card-text"><small class="text-muted">{{year}}</small></p>
+                    <p class="card-text">{{progress}}</p>
+                    {{#unless favorite}}
+                    <a name="add" id="add" class="btn btn-primary" href="/games/{{game_id}}/favorite/add?_method=POST"
+                        role="button">Add to
+                        favorites</a>
+                    {{/unless}}
+                    {{#if favorite}}
+                    <a name="add" id="add" class="btn btn-warning"
+                        href="/games/{{game_id}}/favorite/remove?_method=POST" role="button">Remove
+                        from favorites</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
     {{/each}}
 </div>

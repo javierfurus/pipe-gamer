@@ -1,4 +1,6 @@
+const { resolveSoa } = require('dns');
 var express = require('express');
+const { first } = require('../db/knex');
 const knex = require('../db/knex');
 var router = express.Router();
 router.use((req, res, next) => {
@@ -46,10 +48,24 @@ router.get('/details/:id', async (req, res, next) => {
   const game = await knex('game_list')
     .select()
     .where('game_list.game_id', id)
-    .join('review', 'review.game_id', '=', 'game_list.game_id')
-    .join('player_list', 'player_list.player_id', '=', 'review.player_id')
+    .leftJoin('review', 'review.game_id', '=', 'game_list.game_id')
+    .leftJoin('player_list', 'player_list.player_id', '=', 'review.player_id')
     .first();
   res.render('details', game);
+});
+// Add a review to a game!
+router.post('/details/:id', async (req, res, next) => {
+  const review = req.body;
+  if (await isReviewValid(review)) {
+    const review = {
+      player_id: 1,
+      score: req.body.score,
+      review: req.body.review,
+      game_id: req.params.id
+    };
+    await knex('review').insert(review);
+    res.redirect('back');
+  }
 });
 // Add a game to the collection of a player (now hardcoded: 1)
 router.post('/:id/favorite/add', async (req, res, next) => {
@@ -98,4 +114,8 @@ router.delete('/cart/:id', async (req, res, next) => {
   await knex('cart').where('game_id', id).del();
   res.redirect('back');
 });
+
+const isReviewValid = (review) => {
+  return review.score && review.review;
+};
 module.exports = router;
