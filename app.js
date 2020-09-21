@@ -22,6 +22,14 @@ app.engine(
         if (title === pageTitle) {
           return true;
         }
+      },
+      isCreditEnough: (sum, credit) => {
+        if (sum > credit) {
+          console.log('Falsey');
+          return false;
+        }
+        console.log('truthy');
+        return true;
       }
     },
     extname: 'hbs'

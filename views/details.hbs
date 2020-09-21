@@ -1,12 +1,15 @@
 <div class="container-fluid">
   <div class="d-flex p-2 justify-content-center">
+    {{#with game}}
     <div class="card m-2" style="width: 20rem;">
-      <img src="https://source.unsplash.com/random" class="card-img-top" alt="...">
+      <img src="{{image}}" class="card-img-top" alt="...">
       <div class="card-body">
         <p class="card-text">{{description}}</p>
       </div>
     </div>
+    {{/with}}
     <div class="d-flex flex-column m-2">
+      {{#each review}}
       <div class="card">
         <h5 class="card-header">{{nickname}}</h5>
         <div class="card-body">
@@ -14,13 +17,15 @@
           <p class="card-text"><small class="text-muted">Score: {{score}}</small></p>
         </div>
       </div>
+      {{/each}}
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">What do you think about this game?</h5>
-          <form method="POST" action="/games/details/{{game_id}}">
+          <form method="POST" action="/games/details/{{id}}">
             <div class="form-group">
               <label for="score">Score:</label>
-              <input type="range" class="form-control-range" min="1" max="100" id="score" name="score" oninput="currentScore.value = score.value">
+              <input type="range" class="form-control-range" min="1" max="100" id="score" name="score"
+                oninput="currentScore.value = score.value">
               <output name="currentScore" id="currentScore">Use the slider to give the game a score!</output>
             </div>
             <div class="form-group">
@@ -32,5 +37,6 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>

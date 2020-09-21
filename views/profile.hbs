@@ -4,18 +4,16 @@
 {{/with}}
 <div class="row">
     {{#with user}}
-    <div class="card m-3" style="max-width: 540px;">
+    <div class="m-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
                 <img src="https://vignette.wikia.nocookie.net/sonic/images/d/d6/Sonic_Generations.jpg/revision/latest?cb=20191004103644"
-                    class="card-img" alt="...">
+                    class="card-img rounded-circle border border-white shadow" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{nickname}}</h5>
-                    <p class="card-text">{{first_name}} {{last_name}}</p>
-                    <p class="card-text"><small class="text-muted">{{year}}</small></p>
-                    <p class="card-text">{{publisher}}</p>
+                    <h5 class="card-title">Nickname: {{nickname}}</h5>
+                    <p class="card-text">Full name: {{first_name}} {{last_name}}</p>
                 </div>
             </div>
         </div>
@@ -23,14 +21,15 @@
     {{/with}}
 </div>
 <div>Your collection</div>
-<div class="row">
+<div class="d-flex flex-wrap">
     {{#each collection}}
     {{#unless favorite}}
     <div class="card m-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="https://vignette.wikia.nocookie.net/sonic/images/d/d6/Sonic_Generations.jpg/revision/latest?cb=20191004103644"
-                    class="card-img" alt="...">
+                <a href="/games/details/{{game_id}}">
+                    <img src="{{image}}" class="card-img d-flex align-self-stretch" alt="{{title}}"
+                        style="object-fit:cover; height:15em"> </a>
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -56,14 +55,15 @@
     {{/each}}
 </div>
 <div>Your favorites</div>
-<div class="row">
+<div class="d-flex flex-wrap">
     {{#each collection}}
     {{#if favorite}}
     <div class="card m-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="https://vignette.wikia.nocookie.net/sonic/images/d/d6/Sonic_Generations.jpg/revision/latest?cb=20191004103644"
-                    class="card-img" alt="...">
+                <a href="/games/details/{{game_id}}">
+                    <img src="{{image}}" class="card-img d-flex align-self-stretch" alt="{{title}}"
+                        style="object-fit:cover; height:15em"> </a>
             </div>
             <div class="col-md-8">
                 <div class="card-body">
