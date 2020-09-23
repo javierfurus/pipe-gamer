@@ -1,16 +1,78 @@
-<h2>Snackbar / Toast</h2>
-<p>Snackbars are often used as a tooltips/popups to show a message at the bottom of the screen.</p>
-<p>Click on the button to show the snackbar. It will disappear after 3 seconds.</p>
-
-<button onclick="myFunction()">Show Snackbar</button>
-
-<div id="snackbar">Some text some message..</div>
-
-<script>
-function myFunction() {
-  var x = document.getElementById("snackbar");
-  x.className = "show";
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-}
-</script>
-
+<div class="container d-flex">
+  <div class="row w-100 m-2">
+    <div class="col-sm jumbotron  m-2">
+      <div class="container">
+        <h1 class="display-4">Nucleus is finally here!</h1>
+        <blockquote class="blockquote text-center lead">
+          <p class="mb-0">"Nucleus was supposed to be what those [sic] annoying Pied Piper guys did. We tried to compete
+            with Richard's horrendous algorithm but we failed. This, however, did not dishearten us: history has proven
+            multiple times that often the greatest fall, not the worst! So we realised we fell and we shall rise again.
+            We were kind enough to land our expertise to Pied Piper and help them create the greatest gaming platform:
+            the rebranded Nucleus! "</p>
+          <footer class="blockquote-footer">Gavin Belson <cite title="Source Title">former CEO of Hooli, romance writer
+              and Professor of Ethics In Technology (Tethics)</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-sm d-flex card p-0 m-2">
+      <div class="card-header">
+        What is Nucleus?
+      </div>
+      <div class="card-body">
+        <p>Nucleus is a technological marvel made possible by the genius mind of Gavin Belson and the little help of
+          Pied Piper.</p>
+        <p>But what is it exactly? A storefront? A gaming platform? And how is Pied Piper involved?</p>
+        <p>Well, it is both! It is both a storefront and a gaming platform! And this is exactly where the little help of
+          Pied Piper comes into the picture. With their so-so compression technology, amazingly improved by former Hooli
+          employees and Gavin Belson's insporation, games download in a SNAP. Want to play a game on your own hardware?
+          Buy it and download it in seconds! Want to play on a weak device? Stream it with very little data usage!</p>
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-sm d-flex card p-0 m-2">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="card m-2" style="width: 18rem;">
+        <img src="/images/spiderman.jpg" class="card-img-top" alt="..." style="object-fit:cover; height:15em">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        </div>
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-sm d-sm-flex d-md-none card p-0 m-2">
+      <div class="card-header">
+        Featured
+      </div>
+      {{!-- Reviews on small screens --}}
+      <div class="card m-2 align-self-center" style="width: 18rem;">
+        <img src="/images/spiderman.jpg" class="card-img-top" alt="..." style="object-fit:cover; height:15em">
+        <div class="card-header">
+          Reviews
+        </div>
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{!-- Reviews on large screens --}}
+  <div class="d-none d-md-flex justify-content-center p-2">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Reviews
+      </div>
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+    </div>
+  </div>
+</div>
