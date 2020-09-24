@@ -14,65 +14,86 @@
         </blockquote>
       </div>
     </div>
+    <div class="w-100">
+      <h1 class="display-4 text-center">Nucleus is the future.</h1>
+      <h1 class="display-4 text-center">You are Nucleus.</h1>
+    </div>
     <div class="w-100"></div>
     <div class="col-sm d-flex card p-0 m-2">
       <div class="card-header">
-        What is Nucleus?
+        About Nucleus
       </div>
       <div class="card-body">
-        <p>Nucleus is a technological marvel made possible by the genius mind of Gavin Belson and the little help of
+        <p class="font-weight-bold">What is Nucleus?</p>
+        <p>Nucleus is a technological marvel made possible by the genius mind of Gavin Belson and the <i>little</i> help
+          of
           Pied Piper.</p>
-        <p>But what is it exactly? A storefront? A gaming platform? And how is Pied Piper involved?</p>
+        <p class="font-weight-bold">But what is it exactly?</p>
+        <p>A storefront? A gaming platform? And how is Pied Piper involved?</p>
         <p>Well, it is both! It is both a storefront and a gaming platform! And this is exactly where the little help of
-          Pied Piper comes into the picture. With their so-so compression technology, amazingly improved by former Hooli
-          employees and Gavin Belson's insporation, games download in a SNAP. Want to play a game on your own hardware?
+          Pied Piper comes into the picture. With their so-so compression technology, <b>amazingly improved by former
+            Hooli
+            employees and Gavin Belson's insporation,</b> games download in a SNAP. Want to play a game on your own
+          hardware?
           Buy it and download it in seconds! Want to play on a weak device? Stream it with very little data usage!</p>
       </div>
     </div>
     <div class="w-100"></div>
-    <div class="col-sm d-flex card p-0 m-2">
+    <div class="col-sm card p-0 m-2">
       <div class="card-header">
-        Featured
+        Featured games
       </div>
-      <div class="card m-2" style="width: 18rem;">
-        <img src="/images/spiderman.jpg" class="card-img-top" alt="..." style="object-fit:cover; height:15em">
-        <div class="card-header">
-          Featured
+      <div class="row row-cols-1 row-cols-md-3">
+        {{#each games}}
+        <div class="col mb-4">
+          <div class="card m-2">
+            <img src="{{image}}" class="card-img-top" alt="..." style="object-fit:cover; height:15em">
+            <div class="card-header">
+              {{title}}
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        </div>
+        {{/each}}
       </div>
     </div>
     <div class="w-100"></div>
+    {{!-- Reviews on small screens --}}
     <div class="col-sm d-sm-flex d-md-none card p-0 m-2">
-      <div class="card-header">
-        Featured
-      </div>
-      {{!-- Reviews on small screens --}}
-      <div class="card m-2 align-self-center" style="width: 18rem;">
-        <img src="/images/spiderman.jpg" class="card-img-top" alt="..." style="object-fit:cover; height:15em">
-        <div class="card-header">
-          Reviews
-        </div>
-        <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{!-- Reviews on large screens --}}
-  <div class="d-none d-md-flex justify-content-center p-2">
-    <div class="card" style="width: 18rem;">
       <div class="card-header">
         Reviews
       </div>
+      {{#each review}}
+      <div class="card m-2">
+        <div class="card-header">
+          {{nickname}} reviewed {{title}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{review}}</p>
+        </div>
+        <div class="card-footer">
+          Score: {{score}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  {{!-- Reviews on large screens --}}
+  <div class="d-none d-md-flex card m-2 w-50">
+    <div class="card-header">
+      Reviews
+    </div>
+    {{#each review}}
+    <div class="card m-2">
+      <div class="card-header">
+        {{nickname}} reviewed {{title}}
+      </div>
       <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <p class="card-text">{{review}}</p>
+      </div>
+      <div class="card-footer">
+        Score: {{score}}
       </div>
     </div>
+    {{/each}}
   </div>
 </div>

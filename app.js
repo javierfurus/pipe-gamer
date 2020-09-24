@@ -4,13 +4,11 @@ const handlebars = require('express-handlebars');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const knex = require('./db/knex');
-var indexRouter = require('./routes/index');
+var homeRouter = require('./routes/home');
 var gamesRouter = require('./routes/games');
 var profileRouter = require('./routes/profile');
 
 var app = express();
-
 // view engine setup
 app.engine(
   'hbs',
@@ -42,7 +40,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', indexRouter);
+// Routes
+app.use('/', homeRouter);
 app.use('/games', gamesRouter);
 app.use('/profile', profileRouter);
 
