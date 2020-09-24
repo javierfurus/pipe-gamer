@@ -12,7 +12,7 @@ Just simply run ```docker-compose up``` (with ```sudo``` if you are not part of 
 <p align="center">
   <img src="https://github.com/javierfurus/pipe-gamer/blob/master/readmeimg/store.png?raw=truehttps://github.com/javierfurus/pipe-gamer/blob/master/readmeimg/store.png?raw=true">
 </p>
-
+# Credits
 PIED PIPER, Hooli, Silicon Valley © 2020 Home Box Office, Inc. All rights reserved. HBO® and all related programs are the property of Home Box Office, Inc.
 <p align="left">
   <img src="https://github.com/javierfurus/pipe-gamer/blob/master/readmeimg/70ddhs12gmh31.jpg?raw=true" height="100">
